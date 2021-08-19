@@ -1,0 +1,10 @@
+select {
+	width: 300px;
+	height: 40px;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+p {
+	margin: 0;
+}

@@ -1,0 +1,29 @@
+.Productos {
+	width: 100%;
+	height: auto;
+	text-align: center;
+}
+
+.Productos__img {
+	width: 100%;
+	height: auto;
+}
+
+.Productos__img > img {
+	width: 100%;
+	height: 100%;
+}
+
+.Productos__descripcion > button {
+	margin: 10px auto;
+	padding: 9px;
+	background-color: #43abdc;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.Productos__descripcion > button > a {
+	text-decoration: none;
+	color: #fff;
+}

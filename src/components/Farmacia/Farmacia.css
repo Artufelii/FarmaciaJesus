@@ -1,0 +1,45 @@
+.Farmacia {
+	position: relative;
+	top: 75px;
+	display: grid;
+	grid-template-areas: "menu select select select"
+											 "menu productos productos productos"	
+											 "menu paginacion paginacion paginacion";	
+	grid-template-columns: 400px 1fr 1fr 1fr;
+	grid-template-rows: 70px auto;
+	grid-gap: 16px;
+	width: 90%;
+	min-height: 900px;
+	background-color: #fff;
+	margin: 0 auto 75px auto;
+	padding: 20px;
+}
+
+.Farmacia__menu {
+	grid-area: menu;
+}
+
+.Farmacia__select {
+	grid-area: select;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	padding-right:30px; 
+}
+
+.Farmacia__producto {
+	grid-area: productos;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 16px;
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	padding-bottom: 50px;
+}
+
+.Farmacia__paginacion {
+	grid-area: paginacion;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 30px;
+}

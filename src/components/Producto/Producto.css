@@ -1,0 +1,33 @@
+.Producto {
+	position: relative;
+	top: 70px;
+	width: 85%;
+	min-height: 980px;
+	margin: 0 auto;
+	padding: 30px;
+	background-color: #fff;
+}
+
+.Producto__title > h3 {
+	color: #43abdc;
+}
+
+.Producto__img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: auto;
+}
+
+.Producto__img > img {
+	width: 60%;
+}
+
+.Producto__description {
+	width: 100%;
+}
+
+.Producto__description > p {
+	margin: 5px 0;
+}
