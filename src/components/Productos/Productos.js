@@ -12,7 +12,10 @@ const Productos = ({ id, image, name, presentacion, precio }) => {
       <div className="Productos__descripcion">
         <p>{ name }</p>
         <p>{ presentacion }</p>
-        <p>$ <strong>{ precio }.00</strong> MXN</p>
+        <p><strong>{ new Intl.NumberFormat("es-MX", {
+          style: "currency",
+          currency: "MXN"
+        }).format(precio) }</strong></p>
         <button><Link to = {`/catalogo/${id}`}>Mas informacion</Link></button>
       </div>
     </div>

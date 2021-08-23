@@ -38,7 +38,11 @@ const Producto = () => {
         <div className="Producto__title">
           <h2>{ producto.substancia } { producto.presentacion }</h2>
           <hr />
-          <h3>$ { producto.precio }.00 MXN</h3>
+          <h3>{ new Intl.NumberFormat("es-MX", {
+              style: "currency", 
+              currency: "MXN"
+            }).format(producto.precio) }
+          </h3>
         </div>
         <div className="Producto__img">
           <img src={ producto.image } alt={ producto.name } />

@@ -28,6 +28,7 @@ const Products = ({ productos }) => {
     }
   }
 
+
   return(
     <Carousel 
       responsive={ responsive } 
@@ -38,7 +39,11 @@ const Products = ({ productos }) => {
          <div className="carousel__item" key={item._id}>
            <img src={ item.image } alt={ item.name }  />
            <h3>{ item.substancia } {item.presentacion}</h3>
-           <h4>$ { item.precio }.00 MXN</h4>
+           <h4>{ new Intl.NumberFormat('es-MX', {
+                style: "currency", 
+                currency: "MXN"
+              }).format(parseFloat(item.precio)) }
+           </h4>
            <button><Link to = { `/catalogo/${item._id}` }>Más Información</Link></button>
          </div>
       ))}

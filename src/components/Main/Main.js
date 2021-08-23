@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import Carousel from '../Carousel/Corousel'
 import Products from '../Products/Products'
 import Form from '../Form/Form'
+import Map from '../Map/Map'
 import axios from '../axios'
 import './Main.css' 
 
@@ -74,12 +75,14 @@ const Main = ({ medicamentos, rebotica, higiene }) => {
       <div className="main__productos">
         <Products productos= { rebotica } />
       </div>
-      <Form 
-        data={ data } 
-        succeeded={ succeeded }
-        processing={ processing }
-        onSubmit={ handleSubmit } 
-      />
+      <div className="main__contact">
+        <Form 
+          data={ data } 
+          succeeded={ succeeded }
+          processing={ processing }
+          onSubmit={ handleSubmit } 
+        />
+      </div>
     </main>
   )
 }

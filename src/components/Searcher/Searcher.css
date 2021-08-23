@@ -23,12 +23,14 @@
 }
 
 .searcher__result {
-	position: absolute;
+	position: fixed;
 	top: 65px;
-	width: 32%;
-	height: 300px;
+	left: 46%;
+	transform: translateX(-46%);
+	width: inherit;
+	max-height: 300px;
 	background-color: #fff;
-	padding: 20px;
+	padding: 0 10px;
 	overflow-y: auto;
 }
 

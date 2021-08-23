@@ -25,6 +25,8 @@
 }
 
 .Producto__description {
+	position: relative;
+	bottom: 70px;
 	width: 100%;
 }
 

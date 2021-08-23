@@ -20,3 +20,6 @@
 	margin: 0 auto;
 }
 
+.main__contact {
+	display: flex;
+}
