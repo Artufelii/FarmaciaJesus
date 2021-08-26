@@ -12,6 +12,7 @@ const App = () => {
 
   const [ productos, setProductos ] = useState([])
   const [ clases, setClases ] = useState([])
+  const [marcas, setMarcas] = useState([])
 
   useEffect(() => {
     const getProductos = async () => {
@@ -38,9 +39,22 @@ const App = () => {
       }
     }
 
+    const getMarcas = async () => {
+      try {
+        const { data } = await axios({
+          method: 'GET',
+          url: '/marcas'
+        })
+        setMarcas(data)
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    getMarcas()
     getProductos()
     getClases()
-  }, [setProductos, setClases])
+  }, [setProductos, setClases, setMarcas])
 
   const medicamentos = productos.filter((objeto) => {
     const tipo = objeto.tipo.toLowerCase()
@@ -68,7 +82,11 @@ const App = () => {
           <Producto />
         </Route>
         <Route path="/catalogo">
-          <Farmacia clases={ clases } productos={ productos } />
+          <Farmacia 
+            clases={ clases } 
+            marcas={ marcas }
+            productos={ productos } 
+          />
         </Route>
         <Route path="/">
           <Main 

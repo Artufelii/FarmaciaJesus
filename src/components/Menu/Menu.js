@@ -4,7 +4,7 @@ import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 
 import './Menu.css'
 
-const Menu = ({ handleClass, clases }) => {
+const Menu = ({ handleClass, clases, marcas }) => {
 
   const [mostrar, setMostrar] = useState('');
   
@@ -40,9 +40,9 @@ const Menu = ({ handleClass, clases }) => {
       <div className="Menu__listas" hidden={ mostrar !== 'marca' && true }>
         <ul>
           <li onClick={handleClass}>Todo</li>
-          <li onClick={handleClass}>Marzam</li>
-          <li onClick={handleClass}>Raam</li>
-          <li onClick={handleClass}>Simons</li>
+          {marcas.map((item) => (
+            <li onClick={handleClass} key={ item._id }>{ item.marca }</li>
+          ))}
         </ul>
       </div>
       <button className="Menu__filtros" onClick={() => handleClick('precio')}>
@@ -52,7 +52,7 @@ const Menu = ({ handleClass, clases }) => {
       <div className="Menu__listas" hidden={mostrar !== 'precio' && true}>
         <ul>
           <li><input type="checkbox" value="0-100"/>$0-$100</li>
-          <li><input type="checkbox" value="0-100"/>$100-$1000</li>
+          <li><input type="checkbox" value="100-1000"/>$100-$1000</li>
         </ul>
       </div>
     </div>

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 })) 
 
-const Farmacia = ({ productos, clases }) => {
+const Farmacia = ({ productos, clases, marcas }) => {
 
   const perPage = 10
   const classes = useStyles()
@@ -119,7 +119,12 @@ const Farmacia = ({ productos, clases }) => {
   return (
     <div className="Farmacia">
       <div className="Farmacia__menu">
-        <Menu handleClass = { handleClass } clases={ clases } productos={productos}/>
+        <Menu 
+          handleClass = { handleClass } 
+          clases={ clases } 
+          marcas={ marcas }
+          productos={productos}
+        />
       </div>
       <div className="Farmacia__select">
         <Paginacion 
