@@ -51,8 +51,8 @@ const Menu = ({ handleClass, clases, marcas }) => {
       </button>
       <div className="Menu__listas" hidden={mostrar !== 'precio' && true}>
         <ul>
-          <li><input type="checkbox" value="0-100"/>$0-$100</li>
-          <li><input type="checkbox" value="100-1000"/>$100-$1000</li>
+          <li><input onChange={ handleClass } id="0-100" type="checkbox" value="0-100"/><label htmlFor="0-100">$0-$100</label></li>
+          <li><input onChange={ handleClass } id="100-1000" type="checkbox" value="100-1000"/><label htmlFor="100-1000">$100-$1000</label></li>
         </ul>
       </div>
     </div>

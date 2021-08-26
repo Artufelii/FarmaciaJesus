@@ -21,9 +21,40 @@ const Farmacia = ({ productos, clases, marcas }) => {
   const classes = useStyles()
   const [ page, setPage ] = useState(1)
   const [ filtro, setFiltro ] = useState(productos.slice((page-1)*perPage, page * perPage))
+  const [check, setCheck] = useState(false)
+
   const count = Math.ceil(productos.length / perPage)
 
   const handleClass = ({ target }) => {
+    if (target.value === '0-100') {
+      if (!check) {
+        setCheck(true)
+        const FiltroPrecios = productos.filter((item) => {
+          return parseFloat(item.precio) <= 100
+        })
+        return setFiltro(FiltroPrecios)
+      } else {
+        setCheck(false)
+        return setFiltro(productos.slice((1-1)*perPage, 1 * perPage))
+      }
+    }
+
+    if (target.value === '100-1000') {
+      if (!check) {
+        setCheck(true)
+        const FiltroPrecios = productos.filter((item) => {
+          return (
+            parseFloat(item.precio) > 100 &&
+            parseFloat(item.precio) <=1000
+          )      
+        })
+        return setFiltro(FiltroPrecios)
+      } else {
+        setCheck(false)
+        return setFiltro(productos.slice((1-1)*perPage, 1 * perPage))
+      }
+    }
+
     if (target.innerHTML === 'Todo') {
       return setFiltro(productos.slice((1-1)*perPage, 1 * perPage))
     }
