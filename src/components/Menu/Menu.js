@@ -39,9 +39,10 @@ const Menu = ({ handleClass, clases }) => {
       </button>
       <div className="Menu__listas" hidden={ mostrar !== 'marca' && true }>
         <ul>
-          <li>Marzam</li>
-          <li>Raam</li>
-          <li>Simons</li>
+          <li onClick={handleClass}>Todo</li>
+          <li onClick={handleClass}>Marzam</li>
+          <li onClick={handleClass}>Raam</li>
+          <li onClick={handleClass}>Simons</li>
         </ul>
       </div>
       <button className="Menu__filtros" onClick={() => handleClick('precio')}>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import Carousel from '../Carousel/Corousel'
 import Products from '../Products/Products'
 import Form from '../Form/Form'
-import Map from '../Map/Map'
+//import Map from '../Map/Map'
 import axios from '../axios'
 import './Main.css' 
 

@@ -29,7 +29,10 @@ const Farmacia = ({ productos, clases }) => {
     }
 
     const clase = productos.filter((item) => {
-          return item.categoria.toLowerCase() === target.innerHTML.toLowerCase()
+      return (
+        item.categoria.toLowerCase() === target.innerHTML.toLowerCase() ||
+        item.marca.toLowerCase() === target.innerHTML.toLowerCase()
+      ) 
         }).slice((page-1)*perPage, page * perPage)
 
     setFiltro(clase)
