@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-import axios from '../axios'
+import { getInfo } from '../../helpers'
 import './Producto.css'
 
 const Producto = () => {
@@ -12,20 +12,8 @@ const Producto = () => {
 
   useEffect(() => {
 
-    const getProducto = async () => {
-      try {
-        const { data } = await axios({
-          method: 'GET',
-          url: `/medicinas/${id}`
-        })
-        setProducto(data)
-
-      } catch (e) {
-        console.error(e)
-      }
-    }
-
-    getProducto()
+    getInfo('medicinas', id)
+      .then(setProducto)
 
   }, [id, setProducto])
 

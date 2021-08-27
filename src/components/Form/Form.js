@@ -4,10 +4,9 @@ import { reduxForm, Field, reset } from 'redux-form'
 import FileInput from '../FileInput/FileInput'
 import './Form.css'
 
-const Form = ({ handleSubmit, data, succeeded, processing, dispatch, form }) => {
+const Form = ({ handleSubmit, data, succeeded, processing, dispatch, form, files, setFiles }) => {
 
   const [ capturador, setCapturador ] = useState('')
-  const [ files, setFiles ] = useState([]);
 
   const handleSelect = ({ target }) => 
     (target.value !== '') ? setCapturador(target.value) : setCapturador('')
@@ -28,8 +27,8 @@ const Form = ({ handleSubmit, data, succeeded, processing, dispatch, form }) => 
       <h5>Teléfono:</h5>
       <Field component='input' name="phone" type="text" />
       <div className="form__selected">
-        <input type="radio" name="receta" value="texto" onChange={ handleSelect } /> Capturar Receta
-        <input type="radio" name="receta" value="imagen" onChange={ handleSelect }/> Subir imagen
+        <input id="texto" type="radio" name="receta" value="texto" onChange={ handleSelect } /><label htmlFor="texto">Capturar Receta</label>
+        <input id="imagen" type="radio" name="receta" value="imagen" onChange={ handleSelect }/><label htmlFor="imagen">Subir imagen</label>
       </div>
       {(capturador === 'texto') && 
         <div className="form__text">
@@ -38,12 +37,12 @@ const Form = ({ handleSubmit, data, succeeded, processing, dispatch, form }) => 
         </div>}
       {(capturador === 'imagen') && 
         <div className="form__files">
-          <span className="fake-btn">Choose files</span>
+          <span className="fake-btn">Seleccionar</span>
           <span className="file-msg">
             {files.length === 1 ? files[0].name : 
               files.length > 1 ? 
               files.length + ' Archivos Seleccionados' : 
-              'or drag and drop files here'
+              'o arrastrar máximo 2 archivos aquí'
             }
           </span>
           <Field 

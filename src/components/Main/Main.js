@@ -4,7 +4,7 @@ import Carousel from '../Carousel/Corousel'
 import Products from '../Products/Products'
 import Form from '../Form/Form'
 //import Map from '../Map/Map'
-import axios from '../axios'
+import { sendInfo } from '../../helpers'
 import './Main.css' 
 
 const Main = ({ medicamentos, rebotica, higiene }) => {
@@ -12,6 +12,7 @@ const Main = ({ medicamentos, rebotica, higiene }) => {
   const [data, setData] = useState('')
   const [ succeeded, setSucceeded ] = useState(false)
   const [ processing, setProcessing ] = useState(false)
+  const [ files, setFiles ] = useState([]);
 
   const handleSubmit = async (payload) => {
 
@@ -21,7 +22,9 @@ const Main = ({ medicamentos, rebotica, higiene }) => {
 
     const body = new FormData()
     if (files !== undefined) {
-      body.append("files", files[0])
+      files.forEach((file, index) => {
+        body.append(`file${index}`, file)
+      })
     }
 
     body.append("name", name)
@@ -29,18 +32,12 @@ const Main = ({ medicamentos, rebotica, higiene }) => {
     body.append("phone", phone)
     body.append("message", message)
     
-    const response = await axios({
-      method: 'POST',
-      url: '/cliente',
-      headers: {
-        'Content-type': 'multipart/form-data'
-      },
-      data:body
-      })
+    sendInfo(body)
+      .then(data => setData(data.message))
 
-    setData(response.data.message)
     setSucceeded(true)
     setProcessing(false)
+    setFiles([])
 
     setTimeout(() => {
       setSucceeded(false)
@@ -81,6 +78,8 @@ const Main = ({ medicamentos, rebotica, higiene }) => {
           succeeded={ succeeded }
           processing={ processing }
           onSubmit={ handleSubmit } 
+          files={ files }
+          setFiles={ setFiles }
         />
       </div>
     </main>

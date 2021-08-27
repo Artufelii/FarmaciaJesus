@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer'
 import Main from './components/Main/Main'
 import Farmacia from './components/Farmacia/Farmacia'
 import Producto from './components/Producto/Producto'
-import axios from './components/axios'
+import { getInfo } from './helpers'
 
 const App = () => {
 
@@ -15,45 +15,16 @@ const App = () => {
   const [marcas, setMarcas] = useState([])
 
   useEffect(() => {
-    const getProductos = async () => {
-      try {
-        const { data } = await axios({
-          method: 'GET',
-          url: '/medicinas',
-        })
-        setProductos(data)
-      } catch (e) {
-        console.error(e)
-      }
-    }
 
-    const getClases = async () => {
-      try {
-        const { data } = await axios({
-          method: 'GET',
-          url: '/clases'
-        })
-        setClases(data)
-      } catch (e) {
-        console.error(e)
-      }
-    }
+    getInfo('marcas', '')
+      .then( setMarcas )
 
-    const getMarcas = async () => {
-      try {
-        const { data } = await axios({
-          method: 'GET',
-          url: '/marcas'
-        })
-        setMarcas(data)
-      } catch (e) {
-        console.error(e)
-      }
-    }
+    getInfo('medicinas', '')
+      .then(setProductos)
 
-    getMarcas()
-    getProductos()
-    getClases()
+    getInfo('clases', '')
+      .then(setClases)
+
   }, [setProductos, setClases, setMarcas])
 
   const medicamentos = productos.filter((objeto) => {

@@ -14,6 +14,7 @@ const FileInput = (props) => {
       className="file-input" 
       type="file"
       onChange={ onInputChange }
+      accept="image/*"
       multiple
     />
   )
