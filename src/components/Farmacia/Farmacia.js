@@ -15,26 +15,35 @@ const useStyles = makeStyles((theme) => ({
   },
 })) 
 
+let filterArray = []
+
 const Farmacia = ({ productos, clases, marcas }) => {
 
-  const perPage = 10
+  const perPage = 10 
   const classes = useStyles()
   const [ page, setPage ] = useState(1)
   const [ filtro, setFiltro ] = useState(productos.slice((page-1)*perPage, page * perPage))
   const [check, setCheck] = useState(false)
 
-  const count = Math.ceil(productos.length / perPage)
+  let count 
+
+  if (filterArray.length !== 0) {
+    count = Math.ceil(filterArray.length / perPage) 
+  } else {
+    count = Math.ceil(productos.length / perPage)
+  }
 
   const handleClass = ({ target }) => {
     if (target.value === '0-100') {
       if (!check) {
         setCheck(true)
-        const FiltroPrecios = productos.filter((item) => {
+        filterArray = productos.filter((item) => {
           return parseFloat(item.precio) <= 100
         })
-        return setFiltro(FiltroPrecios)
+        return setFiltro(filterArray.slice((1-1)*perPage, page * perPage))
       } else {
         setCheck(false)
+        filterArray = []
         return setFiltro(productos.slice((1-1)*perPage, 1 * perPage))
       }
     }
@@ -42,35 +51,42 @@ const Farmacia = ({ productos, clases, marcas }) => {
     if (target.value === '100-1000') {
       if (!check) {
         setCheck(true)
-        const FiltroPrecios = productos.filter((item) => {
+        filterArray = productos.filter((item) => {
           return (
             parseFloat(item.precio) > 100 &&
             parseFloat(item.precio) <=1000
           )      
         })
-        return setFiltro(FiltroPrecios)
+        return setFiltro(filterArray.slice((1-1)*perPage, page * perPage))
       } else {
         setCheck(false)
+        filterArray = []
         return setFiltro(productos.slice((1-1)*perPage, 1 * perPage))
       }
     }
 
     if (target.innerHTML === 'Todo') {
+      filterArray = []
       return setFiltro(productos.slice((1-1)*perPage, 1 * perPage))
     }
 
-    const clase = productos.filter((item) => {
+    filterArray = productos.filter((item) => {
       return (
         item.categoria.toLowerCase() === target.innerHTML.toLowerCase() ||
         item.marca.toLowerCase() === target.innerHTML.toLowerCase()
       ) 
-        }).slice((page-1)*perPage, page * perPage)
+        })
 
-    setFiltro(clase)
+    setFiltro(filterArray.slice((1-1)*perPage, page * perPage))
   }
 
   const handleChange = (event, value) => {
     setPage(value)
+
+    if (filterArray.length !== 0) {
+      return setFiltro(filterArray.slice((value-1)*perPage, value*perPage))
+    }
+
     setFiltro(productos.slice((value-1)*perPage, value*perPage))
   }
 
