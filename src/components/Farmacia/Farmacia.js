@@ -90,8 +90,8 @@ const Farmacia = ({ productos, clases, marcas }) => {
     setFiltro(productos.slice((value-1)*perPage, value*perPage))
   }
 
-  const handleOrder = ({ target }) => {
-    switch (target.value) {
+  const handleOrder = ({ target: { value } }) => {
+    switch (value) {
       case 'nombre A-Z':
         setFiltro(productos.sort((a, b) => {
           if (a.name > b.name) {

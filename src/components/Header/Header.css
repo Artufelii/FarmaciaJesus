@@ -1,6 +1,7 @@
 .header {
   position: fixed;
   display: flex;
+  justify-content: space-evenly;
   width: 100%;
   height: 75px;
   background-color: #fff;
@@ -23,9 +24,13 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: calc(100%/3);
+  width: 33%;
   list-style: none;
   font-size: 16px;
+}
+
+.header__searcher {
+  width: 33%;
 }
 
 .header__nav > li {

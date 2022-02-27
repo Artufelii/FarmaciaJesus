@@ -15,7 +15,9 @@ const Header = ({ productos }) => {
           <img src={ Logo } alt="Farmacia Jesus" />
         </Link>
       </div>
-      <Searcher productos={productos} placeholder="Que estas buscando?"/>
+      <div className="header__searcher">
+        <Searcher productos={productos} placeholder="Que estas buscando?"/>
+      </div>
       <ul className='header__nav'>
         <li><Link to="/catalogo">Catalogo  <FontAwesomeIcon icon={ faBars } /></Link></li>
       </ul>
