@@ -11,10 +11,8 @@ export const getInfo = async (url, id) => {
   }
 
   try {
-    const { data } = await axios({
-      method: 'GET',
-      url: fetchUrl,
-    })
+    const response = await fetch(`http://127.0.0.1:5000/${fetchUrl}`)
+    const data = await response.json()
     return data
 
   } catch (e) {
@@ -26,11 +24,11 @@ export const getInfo = async (url, id) => {
 export const sendInfo = async (body) => {
   const { data } = await axios({
     method: 'POST',
-    url: '/cliente',
+    url: '/api/cliente',
     headers: {
       'Content-type': 'multipart/form-data'
     },
-    data:body
+    data: body
   })
 
   return data

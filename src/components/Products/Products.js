@@ -1,11 +1,13 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
 import './Products.css'
 
 const Products = ({ productos }) => {
+
+  const navigate = useNavigate()
 
   const responsive = {
     desktop: {
@@ -44,7 +46,7 @@ const Products = ({ productos }) => {
                 currency: "MXN"
               }).format(parseFloat(item.precio)) }
            </h4>
-           <button><Link to = { `/catalogo/${item._id}` }>Más Información</Link></button>
+           <button onClick={() => navigate(`/catalogo/${item._id}`)}>Más Información</button>
          </div>
       ))}
     </Carousel>

@@ -15,12 +15,11 @@ const Main = ({ medicamentos, rebotica, higiene }) => {
   const [ files, setFiles ] = useState([]);
 
   const handleSubmit = async (payload) => {
-
     setProcessing(true)
     
+    let body = new FormData()
     const { name, mail, phone, files, message } = payload
 
-    const body = new FormData()
     if (files !== undefined) {
       files.forEach((file, index) => {
         body.append(`file${index}`, file)

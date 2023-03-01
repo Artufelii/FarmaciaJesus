@@ -20,10 +20,13 @@
 	background-color: #43abdc;
 	border: none;
 	border-radius: 5px;
-}
-
-.carousel__item > button > a {
 	font-weight: bold;
 	color: #fff;
-	text-decoration: none;
+	cursor: pointer;
 }
+
+/*.carousel__item > button > a {*/
+	/*font-weight: bold;*/
+	/*color: #fff;*/
+	/*text-decoration: none;*/
+/*}*/

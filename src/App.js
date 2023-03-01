@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route  } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
 
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -16,30 +16,30 @@ const App = () => {
 
   useEffect(() => {
 
-    getInfo('marcas', '')
+    getInfo('/api/marcas', '')
       .then( setMarcas )
 
-    getInfo('medicinas', '')
+    getInfo('/api/medicinas', '')
       .then(setProductos)
 
-    getInfo('clases', '')
+    getInfo('/api/clases', '')
       .then(setClases)
 
   }, [setProductos, setClases, setMarcas])
 
-  const medicamentos = productos.filter((objeto) => {
+  const medicamentos = productos?.filter((objeto) => {
     const tipo = objeto.tipo.toLowerCase()
 
     return tipo.indexOf('medicamento') !== -1
   })
 
-  const higiene = productos.filter((objeto) => {
+  const higiene = productos?.filter((objeto) => {
     const tipo = objeto.tipo.toLowerCase()
 
     return tipo.indexOf('higiene') !== -1
   })
 
-  const rebotica = productos.filter((objeto) => {
+  const rebotica = productos?.filter((objeto) => {
     const tipo = objeto.tipo.toLowerCase()
 
     return tipo.indexOf('rebotica') !== -1
@@ -48,25 +48,24 @@ const App = () => {
   return (
     <Router>
       <Header productos={productos} />
-      <Switch>
-        <Route path='/catalogo/:id'>
-          <Producto />
-        </Route>
-        <Route path="/catalogo">
-          <Farmacia 
-            clases={ clases } 
-            marcas={ marcas }
-            productos={ productos } 
-          />
-        </Route>
-        <Route path="/">
+      <Routes>
+        <Route path="/" element={
           <Main 
             medicamentos={ medicamentos }
             higiene={ higiene }
             rebotica={ rebotica }
           />
+        }/>
+        <Route path="/catalogo" element={
+          <Farmacia 
+            clases={ clases } 
+            marcas={ marcas }
+            productos={ productos } 
+          />
+        }>
         </Route>
-      </Switch>
+        <Route path="/catalogo/:id" element={<Producto />} />
+      </Routes>
       <Footer />
     </Router>
   );

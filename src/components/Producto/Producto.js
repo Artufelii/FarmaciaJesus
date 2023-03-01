@@ -12,7 +12,7 @@ const Producto = () => {
 
   useEffect(() => {
 
-    getInfo('medicinas', id)
+    getInfo('/api/medicinas', id)
       .then(setProducto)
 
   }, [id, setProducto])

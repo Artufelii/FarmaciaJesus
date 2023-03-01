@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
@@ -11,10 +11,9 @@ const store = createStore(combineReducers({
   form:formReducer
 }))
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store = { store }>
     <App />
   </Provider>,
-  document.getElementById('root')
 );
 

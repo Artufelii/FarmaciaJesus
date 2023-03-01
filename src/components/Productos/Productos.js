@@ -1,9 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import './Productos.css'
 
 const Productos = ({ id, image, name, presentacion, precio }) => {
+  const navigate = useNavigate()
+
   return (
     <div className="Productos">
       <div className="Productos__img">
@@ -16,7 +18,7 @@ const Productos = ({ id, image, name, presentacion, precio }) => {
           style: "currency",
           currency: "MXN"
         }).format(precio) }</strong></p>
-        <button><Link to = {`/catalogo/${id}`}>Mas informacion</Link></button>
+        <button onClick={() => navigate(`/catalogo/${id}`)}>Mas informacion</button>
       </div>
     </div>
   )
