@@ -22,4 +22,11 @@
 
 .main__contact {
 	display: flex;
+	justify-content: space-evenly;
+}
+
+@media screen and (max-width: 500px) {
+	.main{
+		width: 100%;
+	}
 }

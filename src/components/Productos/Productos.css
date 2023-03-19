@@ -20,10 +20,19 @@
 	background-color: #43abdc;
 	border: none;
 	border-radius: 5px;
+	font-weight: bold;
+	color: #fff;
 	cursor: pointer;
 }
 
-.Productos__descripcion > button > a {
-	text-decoration: none;
-	color: #fff;
-}
+/*.Productos__descripcion > button > a {*/
+	/*text-decoration: none;*/
+	/*color: #fff;*/
+/*}*/
+
+/*@media screen and (max-width: 500px) {*/
+	/*.Productos {*/
+		/*max-width: 150px;*/
+		/*margin: 0 auto;*/
+	/*}*/
+/*}*/

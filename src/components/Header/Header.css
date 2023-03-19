@@ -5,7 +5,7 @@
   width: 100%;
   height: 75px;
   background-color: #fff;
-  z-index: 1001;
+  z-index: 1002;
 }
 
 .header__logo {
@@ -38,12 +38,29 @@
 }
 
 .header__nav > li > a {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  border-radius: 5px;
   text-decoration: none;
   color: #000;
 }
 
 .header__nav > li > a:hover {
-  text-decoration: underline;
-  color: #aaa;
+  background-color: rgba(155, 155, 155, 0.5);
+}
+
+.responsive__searcher {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1001;
+}
+
+@media screen and (max-width: 500px) {
+  .header__nav > li > a {
+    padding: 0;
+  }
 }
 

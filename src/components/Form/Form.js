@@ -18,7 +18,7 @@ const Form = ({ handleSubmit, data, succeeded, processing, dispatch, form, files
   })
 
   return(
-    <form onSubmit={ handleSubmit } className="form">
+    <form id="contacto" onSubmit={ handleSubmit } className="form">
       <h3>{ data !== '' ? data : '¡Cotiza tu receta en linea!' }</h3>
       <h5>Nombre:</h5>
       <Field component='input' name="name" type="text" />

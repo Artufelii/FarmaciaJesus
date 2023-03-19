@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles'
 import Pagination from '@material-ui/lab/Pagination'
-
 import Menu from '../Menu/Menu'
 import Productos from '../Productos/Productos'
 import Paginacion from '../Paginacion/Paginacion'
 import './Farmacia.css'
+import Modal from '../Modal';
+import {useWindowSize} from '../../hooks';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faFilter} from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +27,8 @@ const Farmacia = ({ productos, clases, marcas }) => {
   const [ page, setPage ] = useState(1)
   const [ filtro, setFiltro ] = useState(productos.slice((page-1)*perPage, page * perPage))
   const [check, setCheck] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const { width } = useWindowSize()
 
   let count 
 
@@ -161,17 +166,24 @@ const Farmacia = ({ productos, clases, marcas }) => {
     document.title = 'Farmacia Jesus | Encuentra Lo Que Estas Buscando'
   }, [])
 
-
-
   return (
     <div className="Farmacia">
       <div className="Farmacia__menu">
+        {width > 500 ? 
         <Menu 
           handleClass = { handleClass } 
           clases={ clases } 
           marcas={ marcas }
           productos={productos}
         />
+          :
+          <button 
+            onClick={() => setIsOpen(true)}
+            className='Menu__filtro--button'
+          >
+            Filtrar <FontAwesomeIcon icon={faFilter}/>
+          </button>
+        }
       </div>
       <div className="Farmacia__select">
         <Paginacion 
@@ -197,6 +209,14 @@ const Farmacia = ({ productos, clases, marcas }) => {
       <div className={`Farmacia__paginacion ${classes.root}`}>
         <Pagination count={count} page={page} onChange={handleChange} />
       </div>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+        <Menu 
+          handleClass = { handleClass } 
+          clases={ clases } 
+          marcas={ marcas }
+          productos={productos}
+        />
+      </Modal>
     </div>
   );
 };

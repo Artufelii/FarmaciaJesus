@@ -40,7 +40,8 @@ const Products = ({ productos }) => {
       { productos.map((item) => (
          <div className="carousel__item" key={item._id}>
            <img src={ item.image } alt={ item.name }  />
-           <h3>{ item.substancia } {item.presentacion}</h3>
+           <p>{ item.substancia }</p>
+           <p>{item.presentacion}</p>
            <h4>{ new Intl.NumberFormat('es-MX', {
                 style: "currency", 
                 currency: "MXN"

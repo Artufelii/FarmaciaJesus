@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Pagination from '@material-ui/lab/Pagination'
 
 import './Paginacion.css'
+import {useWindowSize} from '../../hooks/useWindowSize'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 })) 
 
 const Paginacion = ({page, handleChange, count, handleOrder}) => {
+  const { width } = useWindowSize()
 
   const classes = useStyles()
 
@@ -24,9 +26,11 @@ const Paginacion = ({page, handleChange, count, handleOrder}) => {
         <option value="substancia A-Z">Ordenar por substancia A-Z</option>
         <option value="substancia Z-A">Ordenar por substancia Z-A</option>
       </select>
-      <div className={classes.root}>
-        <Pagination count={count} page={page} onChange={handleChange}/>
-      </div>
+      {width < 500 ? null : 
+        <div className={classes.root}>
+          <Pagination count={count} page={page} onChange={handleChange}/>
+        </div>
+      }
     </>
  ) 
 }

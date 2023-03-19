@@ -59,4 +59,23 @@
 	max-width: 100%;
 }
 
-
+@media screen and (max-width: 500px) {
+	.searcher {
+  	background-color: #fff;
+		position: relative;
+		top: 49px;
+		justify-content: center;
+		height: 70px;
+		z-index: 1001;
+	}
+	.searcher > input {
+		width: auto;
+	}
+	.searcher__result {
+		top: 65px;
+		width: auto;
+		left: 0;
+		transform: translateX(0);
+		right: 0;
+	}
+}

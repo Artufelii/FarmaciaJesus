@@ -11,7 +11,7 @@ export const getInfo = async (url, id) => {
   }
 
   try {
-    const response = await fetch(`http://127.0.0.1:5000/${fetchUrl}`)
+    const response = await fetch(`${process.env.REACT_APP_URL}/${fetchUrl}`)
     const data = await response.json()
     return data
 
@@ -33,3 +33,4 @@ export const sendInfo = async (body) => {
 
   return data
 }
+

@@ -43,3 +43,23 @@
 	justify-content: flex-end;
 	padding-right: 30px;
 }
+
+@media screen and (max-width: 500px) {
+	.Farmacia {
+		grid-template-areas: "menu"
+												 "select"	
+												 "productos"
+												 "paginacion";	
+		grid-template-columns: auto;
+		grid-template-rows: 50px auto;
+		grid-gap: 16px;
+	}
+	.Farmacia__producto {
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 10px;
+	}
+
+	.Farmacia__select {
+		display: block;
+	}
+}
